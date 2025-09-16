@@ -88,3 +88,25 @@ To enhance PDF processing with OpenAI:
 1. Install the OpenAI SDK
 2. Update the `pdf-processor.ts` file to use the OpenAI API
 3. Add your OpenAI API key to the environment variables
+
+## Vercel Deployment
+
+1. **Database Setup**
+   - Create a PostgreSQL database (recommended: [Neon](https://neon.tech), [Supabase](https://supabase.com), or [Vercel Postgres](https://vercel.com/postgres))
+   - Get your database connection string
+
+2. **Deploy to Vercel**
+   - Fork or import this repository to your GitHub account
+   - Go to [Vercel](https://vercel.com) and import the project
+   - Add the following environment variables:
+     - `DATABASE_URL`: Your PostgreSQL connection string
+     - `NEXTAUTH_URL`: Your production URL (e.g., https://your-app.vercel.app)
+     - `NEXTAUTH_SECRET`: Generate using `openssl rand -base64 32`
+     - `EMAIL_SERVER`: Your SMTP connection string
+     - `EMAIL_FROM`: Your sender email address
+     - `OPENAI_API_KEY`: Your OpenAI API key (optional)
+
+3. **Post-Deployment**
+   - The database schema will be automatically created during build
+   - Update `NEXTAUTH_URL` to your production URL
+   - Configure your email provider for production use
